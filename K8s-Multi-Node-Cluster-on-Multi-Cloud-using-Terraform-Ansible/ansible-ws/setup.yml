@@ -1,0 +1,15 @@
+---
+
+- name: Deploying Kubernetes Master Role on AWS Instance
+  hosts: "{{ groups['aws_k8s_master_host'][0] }}"
+  roles:
+    - role: k8s_master
+
+
+
+- name: Deploying Kubernetes Slave Role AWS worker Instances
+  hosts: "{{ groups['aws_k8s_worker_host'][0] }}"
+  gather_facts: no
+  roles:
+    - role: k8s_slave
+...
